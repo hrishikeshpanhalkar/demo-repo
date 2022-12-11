@@ -1,0 +1,76 @@
+{% extends 'nav.html' %} {% block form %}
+<h1 data-aos="fade-up">Registration Form</h1>
+<div class="container" data-aos="fade-up" data-aos-delay="400">
+  {% for message in messages %}
+  <div
+    class="alert alert-{{message.tags}} alert-dismissible fade show"
+    role="alert"
+  >
+    <strong>{{message}}</strong>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  {% endfor %}
+  <form class="row g-3" action="/authentication/register/" method="post">
+    {% csrf_token %}
+    <div class="col-lg-10">
+      <label for="inputFirstName" class="form-label">FirstName *</label>
+      <input
+        type="text"
+        name="first_name"
+        required
+        class="form-control"
+        id="inputFirstName"
+      />
+    </div>
+    <div class="col-lg-10">
+      <label for="inputLastName" class="form-label">LastName *</label>
+      <input
+        type="text"
+        name="last_name"
+        required
+        class="form-control"
+        id="inputLastName"
+      />
+    </div>
+    <div class="col-lg-10">
+      <label for="inputEmail4" class="form-label">Email *</label>
+      <input
+        type="email"
+        required
+        name="email"
+        class="form-control"
+        id="inputEmail4"
+      />
+    </div>
+    <div class="col-lg-10">
+      <label for="inputPassword4" class="form-label">Password *</label>
+      <input
+        type="password"
+        name="password"
+        required
+        class="form-control"
+        id="inputPassword4"
+      />
+    </div>
+    <div class="col-lg-10">
+      <label for="inputCPassword4" class="form-label">Confirm Password *</label>
+      <input
+        type="cpassword"
+        name="confirm_password"
+        required
+        class="form-control"
+        id="inputCPassword4"
+      />
+    </div>
+    <div class="col-lg-10">
+      <button type="submit" class="btn btn-primary btn-lg">REGISTER</button>
+    </div>
+    <div>Already User? <a href="/authentication/login">Login</a></div>
+  </form>
+</div>
+{% endblock form %} {% block title %}Registration Page{% endblock title %}

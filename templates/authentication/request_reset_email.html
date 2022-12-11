@@ -1,0 +1,40 @@
+{% extends 'nav.html' %} {% block form %}
+<h1 data-aos="fade-up">Reset Password Form</h1>
+<div class="container" data-aos="fade-up" data-aos-delay="400">
+  {% for message in messages %}
+  <div
+    class="alert alert-{{message.tags}} alert-dismissible fade show"
+    role="alert"
+  >
+    <strong>{{message}}</strong>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  {% endfor %}
+  <form
+    class="row g-3"
+    action="/authentication/request-reset-email/"
+    method="post"
+  >
+    {% csrf_token %}
+    <div class="col-lg-10">
+      <label for="inputEmail4" class="form-label">Email *</label>
+      <input
+        type="email"
+        required
+        name="email"
+        class="form-control"
+        id="inputEmail4"
+      />
+    </div>
+    <div class="col-lg-10">
+      <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    </div>
+    <div><a href="/authentication/login">Go Back</a></div>
+  </form>
+</div>
+{% endblock form %} {% block title %}Reset Email {% endblock title %}
